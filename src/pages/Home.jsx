@@ -8,6 +8,7 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
+import { NavLink } from 'react-router-dom';
 function Home() {
   const [machines, setMachines] = useState([]);
   useEffect(() => {
@@ -62,7 +63,7 @@ function Home() {
               </div>
             </div>
 
-            <a href="#" class="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">Svelte Signals</a>
+            <button  class="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"><NavLink to="/goloreya">Svelte Signals</NavLink></button>
           </div>
         </div>
       </div>
@@ -72,10 +73,10 @@ function Home() {
         <h2 class="mr-10 text-4xl font-bold leading-none md:text-5xl">
         Automobile / Car
         </h2>
-        <a href="#"
+        <NavLink to="/goloreya"
             class="block pb-1 mt-2 text-base font-black text-blue-600 uppercase border-b border-transparent hover:border-blue-600">
             Go to insights -
-        </a>
+        </NavLink>
     </div>
     <div className="div-1 my-[50px]">
                     {machines.map((data, id) => (
