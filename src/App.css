@@ -1,0 +1,11 @@
+.div-1{
+ display: grid;
+ grid-template-columns: 32% 32% 32%;
+ justify-content: space-between;
+ gap: 22px;
+}
+.div-1 img{
+  height: 250px;
+  width: 100%;
+}
+
