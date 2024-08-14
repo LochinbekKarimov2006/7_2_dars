@@ -36,14 +36,14 @@ function Goloreya() {
 
     function qoshish3() {
         setMiqdor(prevMiqdor => prevMiqdor + 1);
-        setQoshish(prevQoshish => prevQoshish + 30);
+        setQoshish(30);
         setQoshish1(prevQoshish1 => prevQoshish1 + 1);
     }
 
     function ayrish() {
         if (qoshish1 > 1) {
             setMiqdor(prevMiqdor => prevMiqdor - 1);
-            setQoshish(prevQoshish => prevQoshish - 30);
+            setQoshish(30);
             setQoshish1(prevQoshish1 => prevQoshish1 - 1);
         }
     }
