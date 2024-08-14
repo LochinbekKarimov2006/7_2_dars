@@ -1,16 +1,30 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+  IconButton,
+} from "@material-tailwind/react";
 function Home() {
+  const [machines, setMachines] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:3000/machines?page=1&limit=3`)
+        .then(response => response.json())
+        .then(data => setMachines(data.results))
+        .catch(error => console.error('Error fetching machines:', error));
+}, []);
   return (
-    <div>
+    <div className='max-w-[1232px] mx-auto'>
       
-<div class="relative overflow-hidden bg-white">
+<div class="relative overflow-hidden">
     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
       <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
         <div class="sm:max-w-lg">
-          <h1 class="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Svelte signals are finally here</h1>
-          <p class="mt-4 text-xl text-gray-500">This year, our new svelte signals will shelter you from the harsh
-             elements of a world that doesn't care if you develop or die.</p>
+          <h1 class="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">This machine is very good.</h1>
+          <p class="mt-4 text-xl text-gray-500">These versatile machines are capable of handling a wide range of tasks, making them a valuable asset in any operation.</p>
         </div>
         <div>
           <div class="mt-10">
@@ -54,6 +68,58 @@ function Home() {
       </div>
     </div>
   </div>
+  <div class="flex flex-wrap items-center justify-between mb-8 mt-[50px]">
+        <h2 class="mr-10 text-4xl font-bold leading-none md:text-5xl">
+        Automobile / Car
+        </h2>
+        <a href="#"
+            class="block pb-1 mt-2 text-base font-black text-blue-600 uppercase border-b border-transparent hover:border-blue-600">
+            Go to insights -
+        </a>
+    </div>
+    <div className="div-1 my-[50px]">
+                    {machines.map((data, id) => (
+                        <Card key={id} className="bg-base-300 shadow-lg">
+                            <CardHeader floated={false} color="blue-gray">
+                                <img src={data.image} alt={data.title} />
+                                <div className="absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
+                                <IconButton
+                                    size="sm"
+                                    color="red"
+                                    variant="text"
+                                    className="!absolute top-4 right-4 rounded-full"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        className="h-6 w-6"
+                                    >
+                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                    </svg>
+                                </IconButton>
+                            </CardHeader>
+                            <CardBody>
+                                <div className="mb-3 flex items-center justify-between">
+                                    <Typography variant="h5" color="blue-gray" className="font-medium">
+                                        {data.title}
+                                    </Typography>
+                                    <Typography color="blue-gray" className="flex items-center gap-1.5 font-normal">
+                                        {data.start_production}
+                                    </Typography>
+                                </div>
+                                <Typography color="gray">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dolor minus nulla unde fugiat saepe ullam doloremque illum impedit!
+                                </Typography>
+                            </CardBody>
+                            <CardFooter className="pt-3">
+                                <Button size="lg" fullWidth={true}>
+                                    Reserve
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    ))}
+                </div>
     </div>
   )
 }
